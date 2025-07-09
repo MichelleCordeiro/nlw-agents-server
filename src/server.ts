@@ -5,7 +5,6 @@ import {
   validatorCompiler,
   type ZodTypeProvider,
 } from 'fastify-type-provider-zod'
-import { sql } from './db/connection.ts'
 import { env } from './env.ts'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
@@ -22,5 +21,6 @@ app.get('/health', () => {
 })
 
 app.listen({ port: env.PORT }).then(() => {
-  // console.log('HTTP server running!!!')
+  // biome-ignore lint/suspicious/noConsole: only used in dev
+  console.log('🚀 HTTP server running!!!')
 })
